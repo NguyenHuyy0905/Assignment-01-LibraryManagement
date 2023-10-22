@@ -1,10 +1,13 @@
-CREATE TABLE Books (
-    book_id INT PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(255),
+CREATE TABLE books (
+    book_id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
     author VARCHAR(255),
-    price DECIMAL(10, 2),
+    publisher VARCHAR(255),
+    category VARCHAR(255),
+    price DOUBLE,
     import_date DATE,
-    status VARCHAR(20)
+    isAvailable BOOLEAN,
+    PRIMARY KEY (book_id)
 );
 
 CREATE TABLE Students (

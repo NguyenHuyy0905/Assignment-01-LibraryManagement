@@ -2,7 +2,6 @@ package model;
 
 import dao.DBConnection;
 import entity.Book;
-import entity.Status;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,14 +11,14 @@ import java.util.logging.Logger;
 
 public class BookDaoImpl implements BookDao{
     private final Connection conn = DBConnection.createConnection();
-    private final String SQL_CREATE_BOOK = "INSERT INTO books (title, author, publisher, category, price) VALUES (?, ?, ?, ?, ?);";
+    private final String SQL_CREATE_BOOK = "INSERT INTO books (title, author, publisher, category, price, import_date, isAvailable) VALUES (?, ?, ?, ?, ?, ?, ?);";
     private final String SQL_DELETE_BOOK_BY_ID = "DELETE FROM books WHERE book_id = ?;";
     private final String SQL_GET_ALL_BOOKS = "SELECT * FROM books;";
     private final String SQL_FIND_BOOK_BY_ID = "SELECT * FROM books WHERE book_id = ?;";
-    private final String SQL_FIND_BOOK_BY_TITLE = "SELECT * FROM books WHERE title like '%?%';";
-    private final String SQL_FIND_BOOK_BY_AUTHOR = "SELECT * FROM books WHERE author like '%?%';";
-    private final String SQL_FIND_BOOK_BY_CATEGORY = "SELECT * FROM books WHERE category like '%?%';";
-    private final String SQL_FIND_BOOK_BY_PUBLISHER = "SELECT * FROM books WHERE publisher like '%?%'";
+    private final String SQL_FIND_BOOK_BY_TITLE = "SELECT * FROM books WHERE title = ?;";
+    private final String SQL_FIND_BOOK_BY_AUTHOR = "SELECT * FROM books WHERE author = ?;";
+    private final String SQL_FIND_BOOK_BY_CATEGORY = "SELECT * FROM books WHERE category = ?;";
+    private final String SQL_FIND_BOOK_BY_PUBLISHER = "SELECT * FROM books WHERE publisher = ?;";
     private final String SQL_FIND_BOOK_WITH_PRICE_IN = "SELECT * FROM books WHERE price BETWEEN ? AND ?;";
     @Override
     public void createBook(Book book) {
@@ -29,12 +28,15 @@ public class BookDaoImpl implements BookDao{
             pstm.setString(3, book.getPublisher());
             pstm.setString(4, book.getCategory());
             pstm.setDouble(5, book.getPrice());
+            pstm.setDate(6, book.getImport_date());
+            pstm.setBoolean(7, book.isAvailable());
             pstm.executeUpdate();
             try (ResultSet rs = pstm.getGeneratedKeys()) {
                 while (rs.next()) {
                     book.setBook_id(rs.getInt(1));
                 }
             }
+            System.out.println("Thêm sách mới thành công !");
         } catch (SQLException ex) {
             Logger.getLogger(BookDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -45,6 +47,7 @@ public class BookDaoImpl implements BookDao{
         try (PreparedStatement pstm = conn.prepareStatement(SQL_DELETE_BOOK_BY_ID)) {
             pstm.setInt(1, id);
             pstm.executeUpdate();
+            System.out.println("Xóa đầu sách thành công !");
         } catch (SQLException ex) {
             Logger.getLogger(BookDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -64,12 +67,13 @@ public class BookDaoImpl implements BookDao{
                 book.setCategory(rs.getString(5));
                 book.setPrice(rs.getDouble(6));
                 book.setImport_date(rs.getDate(7));
-                book.setStatus((Status) rs.getObject(8));
+                book.setAvailable(rs.getBoolean(8));
                 bookList.add(book);
             }
         } catch (SQLException ex) {
             Logger.getLogger(BookDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println(bookList);
         return bookList;
     }
 
@@ -87,12 +91,13 @@ public class BookDaoImpl implements BookDao{
                     book.setCategory(rs.getString(5));
                     book.setPrice(rs.getDouble(6));
                     book.setImport_date(rs.getDate(7));
-                    book.setStatus((Status) rs.getObject(8));
+                    book.setAvailable(rs.getBoolean(8));
                 }
             }
         } catch (SQLException ex) {
             Logger.getLogger(BookDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println(book);
         return book;
     }
 
@@ -110,12 +115,13 @@ public class BookDaoImpl implements BookDao{
                     book.setCategory(rs.getString(5));
                     book.setPrice(rs.getDouble(6));
                     book.setImport_date(rs.getDate(7));
-                    book.setStatus((Status) rs.getObject(8));
+                    book.setAvailable(rs.getBoolean(8));
                 }
             }
         } catch (SQLException ex) {
             Logger.getLogger(BookDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println(book);
         return book;
     }
 
@@ -134,13 +140,14 @@ public class BookDaoImpl implements BookDao{
                     book.setCategory(rs.getString(5));
                     book.setPrice(rs.getDouble(6));
                     book.setImport_date(rs.getDate(7));
-                    book.setStatus((Status) rs.getObject(8));
+                    book.setAvailable(rs.getBoolean(8));
                     bookList.add(book);
                 }
             }
         } catch (SQLException ex) {
             Logger.getLogger(BookDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println(bookList);
         return bookList;
     }
 
@@ -159,13 +166,14 @@ public class BookDaoImpl implements BookDao{
                     book.setCategory(rs.getString(5));
                     book.setPrice(rs.getDouble(6));
                     book.setImport_date(rs.getDate(7));
-                    book.setStatus((Status) rs.getObject(8));
+                    book.setAvailable(rs.getBoolean(8));
                     bookList.add(book);
                 }
             }
         } catch (SQLException ex) {
             Logger.getLogger(BookDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println(bookList);
         return bookList;
     }
 
@@ -184,13 +192,14 @@ public class BookDaoImpl implements BookDao{
                     book.setCategory(rs.getString(5));
                     book.setPrice(rs.getDouble(6));
                     book.setImport_date(rs.getDate(7));
-                    book.setStatus((Status) rs.getObject(8));
+                    book.setAvailable(rs.getBoolean(8));
                     bookList.add(book);
                 }
             }
         } catch (SQLException ex) {
             Logger.getLogger(BookDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println(bookList);
         return bookList;
     }
 
@@ -210,13 +219,14 @@ public class BookDaoImpl implements BookDao{
                     book.setCategory(rs.getString(5));
                     book.setPrice(rs.getDouble(6));
                     book.setImport_date(rs.getDate(7));
-                    book.setStatus((Status) rs.getObject(8));
+                    book.setAvailable(rs.getBoolean(8));
                     bookList.add(book);
                 }
             }
         } catch (SQLException ex) {
             Logger.getLogger(BookDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        System.out.println(bookList);
+        return bookList;
     }
 }

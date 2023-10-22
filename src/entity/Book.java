@@ -1,6 +1,7 @@
 package entity;
 
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Book {
     private int book_id;
@@ -10,15 +11,23 @@ public class Book {
     private String category;
     private double price;
     private Date import_date;
-    private Status status;
-    public Book() {}
+    private boolean isAvailable;
+    public Book() {
+        Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+        this.isAvailable = true;
+        this.import_date = new Date(currentTimestamp.getTime());
+    }
 
     public Book(String title, String author, String publisher, String category, double price) {
+        Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
         this.title = title;
         this.author = author;
         this.publisher = publisher;
         this.category = category;
         this.price = price;
+        this.isAvailable = true;
+        this.import_date = new Date(currentTimestamp.getTime());
+
     }
 
     public int getBook_id() {
@@ -69,7 +78,7 @@ public class Book {
         this.price = price;
     }
 
-    public Date getImport_date() {
+    public java.sql.Date getImport_date() {
         return import_date;
     }
 
@@ -77,11 +86,25 @@ public class Book {
         this.import_date = import_date;
     }
 
-    public Status getStatus() {
-        return status;
+    public boolean isAvailable() {
+        return isAvailable;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "book_id=" + book_id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", category='" + category + '\'' +
+                ", price=" + price +
+                ", import_date=" + import_date +
+                ", isAvailable=" + isAvailable +
+                "}\n";
     }
 }

@@ -8,5 +8,5 @@ import java.util.List;
 public interface BorrowingDao {
     public void letStudentBorrowBook(BorrowedBook borrowedBook);
     public void letStudentReturnBook(int borrow_id);
-    public List<Book> getBorrowedBooksByStudentCode(int student_id);
+    public List<Book> getBorrowedBooksByStudentCode(String student_code);
 }

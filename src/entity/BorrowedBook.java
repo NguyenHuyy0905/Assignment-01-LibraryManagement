@@ -11,12 +11,10 @@ public class BorrowedBook {
 
     public BorrowedBook() {}
 
-    public BorrowedBook(int borrow_id, int student_id, int book_id, Date borrow_date, Date return_date) {
-        this.borrow_id = borrow_id;
+    public BorrowedBook(int student_id, int book_id) {
         this.student_id = student_id;
         this.book_id = book_id;
-        this.borrow_date = borrow_date;
-        this.return_date = return_date;
+        this.borrow_date = new Date();
     }
 
     public int getBorrow_id() {
