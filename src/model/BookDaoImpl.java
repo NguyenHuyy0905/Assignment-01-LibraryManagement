@@ -32,7 +32,7 @@ public class BookDaoImpl implements BookDao{
             pstm.setBoolean(7, book.isAvailable());
             pstm.executeUpdate();
             try (ResultSet rs = pstm.getGeneratedKeys()) {
-                while (rs.next()) {
+                if (rs.next()) {
                     book.setBook_id(rs.getInt(1));
                 }
             }

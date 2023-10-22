@@ -38,7 +38,7 @@ public class StudentDaoImpl implements StudentDao{
         try (PreparedStatement pstm = conn.prepareStatement(SQL_GET_STUDENT_BY_ID)) {
             pstm.setInt(1, id);
             try (ResultSet rs = pstm.executeQuery()) {
-                while (rs.next()) {
+                if (rs.next()) {
                     student.setStudent_id(rs.getInt(1));
                     student.setName(rs.getString(2));
                     student.setStudent_code(rs.getString(3));

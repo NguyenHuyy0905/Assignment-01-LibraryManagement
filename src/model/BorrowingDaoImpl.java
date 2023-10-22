@@ -27,7 +27,7 @@ public class BorrowingDaoImpl implements BorrowingDao{
             pstm_1.setInt(2, borrowedBook.getBook_id());
             pstm_1.executeUpdate();
             try (ResultSet rs_1 = pstm_1.getGeneratedKeys()) {
-                while (rs_1.next()) {
+                if (rs_1.next()) {
                     borrowedBook.setBorrow_id(rs_1.getInt(1));
                 }
             }
