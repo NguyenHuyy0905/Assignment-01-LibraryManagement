@@ -1,3 +1,7 @@
+CREATE DATABASE Assignment01LibraryManagement;
+
+USE DATABASE Assignment01LibraryManagement;
+
 CREATE TABLE books (
     book_id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
