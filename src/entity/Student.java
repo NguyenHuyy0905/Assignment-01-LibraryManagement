@@ -38,10 +38,10 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "student_id=" + student_id +
-                ", name='" + name + '\'' +
-                ", student_code='" + student_code + '\'' +
+        return "Sinh viên {" +
+                "id: " + student_id +
+                ", tên sv: '" + name + '\'' +
+                ", mã sv: '" + student_code + '\'' +
                 '}';
     }
 }

@@ -26,6 +26,7 @@ public class StudentDaoImpl implements StudentDao{
                     student.setStudent_id(generatedKeys.getInt(1));
                 }
             }
+            System.out.println("Thêm mới sinh viên thành công !");
         } catch (SQLException ex) {
             Logger.getLogger(StudentDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -43,6 +44,7 @@ public class StudentDaoImpl implements StudentDao{
                     student.setStudent_code(rs.getString(3));
                 }
             }
+            System.out.println(student);
         } catch (SQLException ex) {
             Logger.getLogger(StudentDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -61,6 +63,7 @@ public class StudentDaoImpl implements StudentDao{
                 student.setStudent_code(rs.getString(3));
                 studentList.add(student);
             }
+            System.out.println(studentList);
         } catch (SQLException ex) {
             Logger.getLogger(StudentDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -72,6 +75,7 @@ public class StudentDaoImpl implements StudentDao{
         try (PreparedStatement pstm = conn.prepareStatement(SQL_DELETE_STUDENT_BY_ID)) {
             pstm.setInt(1, id);
             pstm.executeUpdate();
+            System.out.println("Xóa sinh viên thành công !");
         } catch (SQLException ex) {
             Logger.getLogger(StudentDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }

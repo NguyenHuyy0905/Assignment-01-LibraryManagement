@@ -96,15 +96,15 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "book_id=" + book_id +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", publisher='" + publisher + '\'' +
-                ", category='" + category + '\'' +
-                ", price=" + price +
-                ", import_date=" + import_date +
-                ", isAvailable=" + isAvailable +
+        return "Sách {" +
+                "id: " + book_id +
+                ", Tên sách:'" + title + '\'' +
+                ", Tác giả: '" + author + '\'' +
+                ", NXB: '" + publisher + '\'' +
+                ", Thể loại: '" + category + '\'' +
+                ", Giá: " + price +
+                ", Ngày nhập: " + import_date +
+                ", Trạng thái: " + (isAvailable == true ? "Còn trong thư viện" : "Có người mượn") +
                 "}\n";
     }
 }

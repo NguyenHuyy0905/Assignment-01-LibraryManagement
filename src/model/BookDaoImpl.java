@@ -70,10 +70,10 @@ public class BookDaoImpl implements BookDao{
                 book.setAvailable(rs.getBoolean(8));
                 bookList.add(book);
             }
+            System.out.println(bookList);
         } catch (SQLException ex) {
             Logger.getLogger(BookDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(bookList);
         return bookList;
     }
 
@@ -94,10 +94,10 @@ public class BookDaoImpl implements BookDao{
                     book.setAvailable(rs.getBoolean(8));
                 }
             }
+            System.out.println(book);
         } catch (SQLException ex) {
             Logger.getLogger(BookDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(book);
         return book;
     }
 
@@ -118,10 +118,10 @@ public class BookDaoImpl implements BookDao{
                     book.setAvailable(rs.getBoolean(8));
                 }
             }
+            System.out.println(book);
         } catch (SQLException ex) {
             Logger.getLogger(BookDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(book);
         return book;
     }
 
@@ -144,10 +144,10 @@ public class BookDaoImpl implements BookDao{
                     bookList.add(book);
                 }
             }
+            System.out.println(bookList);
         } catch (SQLException ex) {
             Logger.getLogger(BookDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(bookList);
         return bookList;
     }
 
@@ -170,10 +170,10 @@ public class BookDaoImpl implements BookDao{
                     bookList.add(book);
                 }
             }
+            System.out.println(bookList);
         } catch (SQLException ex) {
             Logger.getLogger(BookDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(bookList);
         return bookList;
     }
 
@@ -196,10 +196,10 @@ public class BookDaoImpl implements BookDao{
                     bookList.add(book);
                 }
             }
+            System.out.println(bookList);
         } catch (SQLException ex) {
             Logger.getLogger(BookDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(bookList);
         return bookList;
     }
 
@@ -223,10 +223,10 @@ public class BookDaoImpl implements BookDao{
                     bookList.add(book);
                 }
             }
+            System.out.println(bookList);
         } catch (SQLException ex) {
             Logger.getLogger(BookDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(bookList);
         return bookList;
     }
 }

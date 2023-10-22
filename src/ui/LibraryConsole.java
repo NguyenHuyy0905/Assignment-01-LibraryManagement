@@ -26,7 +26,7 @@ public class LibraryConsole {
         System.out.println("4. Cho sinh viên mượn, trả sách");
         System.out.println("5. Hiển thị ds những sách mà sv đã mượn (theo msv)");
         System.out.println("0. Exit");
-        int choice = readInt(0, 4);
+        int choice = readInt(0, 5);
         return choice;
     }
     private int menu1() {
@@ -209,21 +209,21 @@ public class LibraryConsole {
         return price;
     }
     public void createBook() {
-        System.out.println("Enter book's title: ");
+        System.out.println("Nhập tên sách: ");
         String title = sc.nextLine();
-        System.out.println("Enter book's author: ");
+        System.out.println("Nhập tên tác giả: ");
         String author = sc.nextLine();
-        System.out.println("Enter book's publisher: ");
+        System.out.println("Nhập tên NXB: ");
         String publisher = sc.nextLine();
-        System.out.println("Enter book's category: ");
+        System.out.println("Nhập thể loại sách: ");
         String category = sc.nextLine();
-        System.out.println("Enter book's price: ");
+        System.out.println("Nhập giá sách: ");
         double price = readDouble(0, Double.MAX_VALUE);
         Book book = new Book(title, author, publisher, category, price);
         bookService.createBook(book);
     }
     public void deleteBook() {
-        System.out.println("Enter book's Id: ");
+        System.out.println("Nhập id của sách: ");
         int id = Integer.parseInt(sc.nextLine());
         bookService.deleteBookById(id);
     }
@@ -231,41 +231,41 @@ public class LibraryConsole {
         bookService.getAllBooks();
     }
     public void findBookById() {
-        System.out.println("Enter book's id: ");
+        System.out.println("Nhập id của sách: ");
         int id = Integer.parseInt(sc.nextLine());
         bookService.findBookById(id);
     }
     public void findBookByTitle() {
-        System.out.println("Enter book's title: ");
+        System.out.println("Nhập tên sách: ");
         String title = sc.nextLine();
         bookService.findBookByTitle(title);
     }
     public void findBookByAuthor() {
-        System.out.println("Enter book's author: ");
+        System.out.println("Nhập tên tác giả: ");
         String author = sc.nextLine();
         bookService.findBookByAuthor(author);
     }
     public void findBookByPublisher() {
-        System.out.println("Enter book's publisher");
+        System.out.println("Nhập tên NXB: ");
         String publisher = sc.nextLine();
         bookService.findBookByPublisher(publisher);
     }
     public void findBookByCategory() {
-        System.out.println("Enter book's category");
+        System.out.println("Nhập thể loại: ");
         String category = sc.nextLine();
         bookService.findBookByCategory(category);
     }
     public void findBookWithPriceIn() {
-        System.out.println("Enter book's less price: ");
+        System.out.println("Nhập giá sách nhỏ: ");
         double lessPrice = Double.parseDouble(sc.nextLine());
-        System.out.println("Enter book's greater price: ");
+        System.out.println("Nhập giá sách lớn: ");
         double greaterPrice = Double.parseDouble(sc.nextLine());
         bookService.findBookWithPriceIn(lessPrice, greaterPrice);
     }
     public void letStudentBorrowBook() {
-        System.out.println("Enter student's id: ");
+        System.out.println("Nhập id của sinh viên: ");
         int student_id = Integer.parseInt(sc.nextLine());
-        System.out.println("Enter book's id: ");
+        System.out.println("Nhập id của sách: ");
         int book_id = Integer.parseInt(sc.nextLine());
         BorrowedBook borrowedBook = new BorrowedBook(student_id, book_id);
         borrowingService.letStudentBorrowBook(borrowedBook);

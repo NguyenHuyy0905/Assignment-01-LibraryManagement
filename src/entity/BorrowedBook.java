@@ -59,12 +59,12 @@ public class BorrowedBook {
 
     @Override
     public String toString() {
-        return "BorrowedBook{" +
-                "borrow_id=" + borrow_id +
-                ", student_id=" + student_id +
-                ", book_id=" + book_id +
-                ", borrow_date=" + borrow_date +
-                ", return_date=" + return_date +
+        return "Lần mượn sách: {" +
+                "id: " + borrow_id +
+                ", id sinh viên: " + student_id +
+                ", id sách: " + book_id +
+                ", ngày mượn: " + borrow_date +
+                ", ngày trả: " + return_date +
                 '}';
     }
 }
